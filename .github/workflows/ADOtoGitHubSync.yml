@@ -1,19 +1,22 @@
-name: Run ADO to GitHub Sync with PowerShell
+name: Sync TFS to GitHub
 
 on:
-  workflow_dispatch:
-  
+  schedule:
+    - cron: '0 0 * * *'  # Run every day at midnight UTC
+
 jobs:
-  build:
-    runs-on: windows-2019
+  sync:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Check out repo        
+      - name: Checkout TFS repository
         uses: actions/checkout@v2
-      - run: |
-           $ListObject = GC -Path "$($env:GITHUB_WORKSPACE)\ADORepoList.json" | ConvertFrom-Json
-           foreach ($object in $ListObject.RepoList){
-            write-host "--------------- Current syncing for repo $($object.AzureRepoName)----------------------------------"
-            Set-Location $($env:GITHUB_WORKSPACE)
-             .\SynADOtoGitHub.ps1 -GitHubDestinationPAT ${{ secrets.GITHUBDESTINATIONPAT }} -ADOSourcePAT ${{ secrets.ADOSOURCEPAT }} -AzureRepoName $($object.AzureRepoName)  -ADOCloneURL $($object.ADOCloneURL)  -GitHubCloneURL  $($object.GitHubCloneURL)
-            write-host "---------------------------------------------------------------------------------------------------"
-           }
+        with:
+          repository: https://yangalwar@dev.azure.com/yangalwar/ProjectFromGit/_git/ProjectFromGit
+          token: ${{ secrets.SOURCEPAT }}
+
+      - name: Push to GitHub
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.DESTINATIONPAT }}
+          branch: main  # Change this to your target branch
