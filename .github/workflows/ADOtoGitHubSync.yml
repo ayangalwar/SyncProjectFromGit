@@ -11,7 +11,7 @@ jobs:
       - name: Checkout TFS repository
         uses: actions/checkout@v2
         with:
-          repository: 'dev.azure.com/yangalwar/ProjectFromGit/_git/ProjectFromGit'
+          repository: yangalwar/ProjectFromGit
           token: ${{ secrets.SOURCEPAT }}
 
       - name: Push to GitHub
