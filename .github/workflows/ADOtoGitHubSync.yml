@@ -12,5 +12,9 @@ jobs:
       - name: run Poweshell script
         run: |
               ./.github/workflows/SynADOtoGitHub.ps1 -DESTINATIONPAT ${{ secrets.DESTINATIONPAT }} -SOURCEPAT ${{ secrets.SOURCEPAT }}
+        shell: pwsh
+        
+      - name: run another Powershell Script  
+        run: |
               ./.github/workflows/Sync_23.1.ps1 -DESTINATIONPAT ${{ secrets.DESTINATIONPAT }} -SOURCEPAT ${{ secrets.SOURCEPAT }}
-        shell: pwsh 
+        shell: pwsh      
