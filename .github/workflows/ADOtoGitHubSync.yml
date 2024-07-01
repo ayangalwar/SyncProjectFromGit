@@ -11,5 +11,5 @@ jobs:
         uses: actions/checkout@v2
       - name: run Poweshell script
         run: |
-         pwsh ./.github/workflows/SynADOtoGitHub.ps1
+              ./.github/workflows/SynADOtoGitHub.ps1 -DESTINATIONPAT ${{ secrets.DESTINATIONPAT }} -SOURCEPAT ${{ secrets.SOURCEPAT }}
         shell: pwsh 
