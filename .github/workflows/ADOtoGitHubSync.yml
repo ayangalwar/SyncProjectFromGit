@@ -4,18 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout TFS repository
-        uses: actions/checkout@v2
-        with:
-          repository: yangalwar/ProjectFromGit
-          token: ${{ secrets.SOURCEPAT }}
-
-      - name: Push to GitHub
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.DESTINATIONPAT }}
-          branch: main  # Change this to your target branch
+ build:
+  runs-on: windows-latest
+  steps:
+   - name: Checkout repository
+     uses: actions/checkout@v2
+   # - name: run Poweshell script
+   #   run: |
+   #    pwsh 
