@@ -3,7 +3,7 @@ param(
      [string]$DestinationPAT,
  
      [Parameter()]
-     [string]$SourcePAT
+     [string]$TFSPAT
  )
 
 # Write your PowerShell commands here.
@@ -20,7 +20,7 @@ Write-Host "github Dir : $githubDir"
 $destination = $githubDir+"\"+ $AzureRepoName+".git"
 Write-Host "destination: $destination"
 #Please make sure, you remove https from azure-repo-clone-url
-$sourceURL = "https://$($SourcePAT)"+"@"+"$($ADOCloneURL)"
+$sourceURL = "https://$($TFSPAT)"+"@"+"$($ADOCloneURL)"
 write-host "source URL : $sourceURL"
 #Please make sure, you remove https from github-repo-clone-url
 $destURL = "https://" + $($DestinationPAT) +"@"+"$($GitHubCloneURL)"
