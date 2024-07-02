@@ -14,9 +14,9 @@ jobs:
               ./.github/workflows/SynADOtoGitHub.ps1 -DESTINATIONPAT ${{ secrets.DESTINATIONPAT }} -SOURCEPAT ${{ secrets.SOURCEPAT }}
         shell: pwsh
         
-      - name: run another Powershell Script 
-        uses: actions/checkout@v3
-      - name: run Poweshell script  
-        run: |
-              ./.github/workflows/Sync_23.1.ps1 -DESTINATIONPAT ${{ secrets.DESTINATIONPAT }} -TFSPAT ${{ secrets.TFSPAT }}
-        shell: pwsh      
+      # - name: run another Powershell Script 
+      #   uses: actions/checkout@v3
+      # - name: run Poweshell script  
+      #   run: |
+      #         ./.github/workflows/Sync_23.1.ps1 -DESTINATIONPAT ${{ secrets.DESTINATIONPAT }} -TFSPAT ${{ secrets.TFSPAT }}
+      #   shell: pwsh      
