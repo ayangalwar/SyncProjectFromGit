@@ -34,6 +34,7 @@ if(!(Test-Path -path $githubDir))
 {
   New-Item -ItemType directory -Path $githubDir
   Set-Location $githubDir
+  git checkout main
   git clone --mirror $sourceURL
 }
 else
