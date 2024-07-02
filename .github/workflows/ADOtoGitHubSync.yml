@@ -18,5 +18,5 @@ jobs:
         uses: actions/checkout@v3
       - name: run Poweshell script  
         run: |
-              ./.github/workflows/Sync_23.1.ps1 -DESTINATIONPAT ${{ secrets.DESTINATIONPAT }} -SOURCEPAT ${{ secrets.TFSPAT }}
+              ./.github/workflows/Sync_23.1.ps1 -DESTINATIONPAT ${{ secrets.DESTINATIONPAT }} -TFSPAT ${{ secrets.TFSPAT }}
         shell: pwsh      
